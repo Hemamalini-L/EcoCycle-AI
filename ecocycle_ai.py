@@ -1,47 +1,55 @@
 import streamlit as st
 
-# Page configuration
-st.set_page_config(page_title="EcoCycle-AI", layout="centered")
+# Set page config
+st.set_page_config(page_title="EcoCycle-AI", layout="wide")
 
-# Title & intro
-st.title("🚲 EcoCycle-AI: Smart Cycle Sharing System")
+# Title and intro
+st.title("🚴 EcoCycle-AI: Smart Cycle Sharing System")
 st.markdown("""
-Welcome to **EcoCycle-AI**, an intelligent and inclusive cycle-sharing platform designed with advanced AI features to promote eco-friendly, accessible, and safe mobility for everyone.
+Welcome to **EcoCycle-AI**, an innovative AI-powered cycle sharing platform designed for smart cities and inclusive mobility.  
+Our goal is to make transportation **eco-friendly**, **intelligent**, and **accessible to everyone**, including the differently-abled.
 """)
 
-# Booking button
-st.markdown("### 📅 Book a Cycle Now")
-if st.button("🚴 Book a Ride"):
-    st.success("Booking feature coming soon! Stay tuned.")
+# Image of AI-powered cycle
+st.image("revolution-white-x-1024x670.jpg", caption="AI-Powered Cycle", use_column_width=True)
 
-# Video demo
-st.markdown("### 📽️ Watch How It Works")
+# Section: Video Demo
+st.header("📽️ How It Works")
 st.video("https://youtu.be/fu7VLfcLf6Y?si=srYur4nDvoev8JQe")
 
-# Features section
-st.markdown("### 🔍 Key Features")
-st.markdown("""
-- 📍 **GPS Tracking System**  
-- ⏱️ **Real-Time Monitoring**  
-- 🆘 **Emergency Signal Alerts**  
-- 🧭 **AI-Powered Route Optimization**  
-- 🧑‍🦽 **Adaptive Technology for Differently-Abled Users**  
-- 🔋 **Battery & Health Tracking**
-""")
+# Booking Button
+st.header("📅 Book Your Ride")
+if st.button("🚲 Book Now"):
+    st.success("Redirecting to booking portal... (You can integrate a form or booking backend here.)")
 
-# AI Cycle Image
-st.markdown("### 🖼️ Sample AI-Powered Cycle")
-st.image("revolution-white-x-1024x670.jpg", caption="Revolution HPC AI-Powered Cycle", use_column_width=True)
+# Features Section
+st.header("🚴‍♀️ Key Features of EcoCycle-AI")
+features = [
+    "📍 **GPS Tracking System** - Track your cycle in real time.",
+    "📡 **Real-Time Monitoring** - Monitor cycle status and location live.",
+    "🆘 **Emergency Assistance** - Built-in system to send signals in emergencies.",
+    "♿ **AI-Powered Route Optimization** - Smart routes based on user needs, including differently-abled support.",
+    "🔋 **Smart Battery Monitoring** - Get notified when the battery is low.",
+    "🌐 **Integrated with Local Transport** - Smooth transitions with metro and bus networks."
+]
+for feat in features:
+    st.markdown(f"- {feat}")
 
-# Contact Information
-st.markdown("### 📬 Contact Us")
-st.markdown("""
-- 📧 Email: [ecocycleai@gmail.com](mailto:ecocycleai@gmail.com)  
-- 📱 Phone: +91 98765 43210  
-- 🌐 Website: [https://ecocycle-ai.streamlit.app](https://ecocycle-ai.streamlit.app)
-""")
+# Contact Info
+st.header("📞 Contact Us")
+col1, col2 = st.columns(2)
+with col1:
+    st.markdown("""
+    - 📧 **Email**: hemamalini291204@gmail.com  
+    - 📱 **Phone**: +91-9876543210  
+    """)
+with col2:
+    st.markdown("""
+    - 🌐 **Website**: [ecocycle-ai.web.app](https://ecocycle-ai.web.app)  
+    - 🏢 **Address**: Vivekananda College of Technology for Women, Tamil Nadu  
+    """)
 
 # Footer
 st.markdown("---")
-st.markdown("© 2025 EcoCycle-AI. All rights reserved.")
+st.markdown("© 2025 EcoCycle-AI | Developed by Hemamalini L 💚")
 
