@@ -1,74 +1,92 @@
 import streamlit as st
-from PIL import Image
+from datetime import datetime
+import random
 
-# Page setup
+# --- Page config ---
 st.set_page_config(page_title="EcoCycle-AI", layout="wide")
 
-# Title and Intro
-st.title("🚴 EcoCycle-AI: Smart Cycle Sharing System")
+# --- Welcome Section ---
+st.title("🚴 EcoCycle-AI: Revolutionizing Urban Mobility")
 st.markdown("""
-Welcome to **EcoCycle-AI**, an innovative AI-powered cycle sharing platform designed for smart cities and inclusive mobility.  
-Our goal is to make transportation **eco-friendly**, **intelligent**, and **accessible to everyone**, including the differently-abled.
+Welcome to **EcoCycle-AI**, an AI-powered smart cycle sharing system designed to make urban transport **efficient**, **eco-friendly**, and **inclusive**.  
+Experience seamless cycling with **live tracking**, **emergency alerts**, **route optimization**, and **smart booking**.
 """)
 
-# AI Cycle Image
-image = Image.open("revolution-white-x-1024x670.jpg")
-st.image(image, caption="AI-Powered Cycle", use_column_width=True)
+# --- Image Section ---
+st.image("revolution-white-x-1024x670.jpg", caption="AI-Powered Smart Cycle", use_column_width=True)
 
-# Video Demo
+# --- Video Tutorial ---
 st.header("📽️ How It Works")
 st.video("https://youtu.be/fu7VLfcLf6Y?si=srYur4nDvoev8JQe")
 
-# Booking Section
+# --- Booking Section ---
 st.header("📅 Book Your Ride")
-if st.button("🚲 Book Now"):
-    st.success("✅ Redirecting to booking portal... (Integrate Google Form or API here)")
+with st.form("booking_form"):
+    name = st.text_input("Name")
+    date = st.date_input("Booking Date", min_value=datetime.now().date())
+    time = st.time_input("Pickup Time")
+    pickup = st.text_input("Pickup Location")
+    drop = st.text_input("Drop Location")
+    cycles = st.number_input("Number of Cycles", min_value=1, max_value=5, step=1)
+    submit = st.form_submit_button("🚲 Confirm Booking")
 
-# GPS Tracking (Simulation)
-st.header("📍 GPS Tracking & Monitoring")
-st.map(data=None)  # You can replace this with real GPS API data in future
-st.markdown("""
-**Live Location Tracking** enabled with smart AI monitoring system.
-""")
+    if submit:
+        st.success(f"✅ Booking confirmed for {name} on {date} at {time}.\nYour cycle(s) will be ready at {pickup}. Enjoy your ride to {drop}!")
 
-# Emergency Assistance
+# --- GPS Live Location Simulation ---
+st.header("📍 Live GPS Tracker")
+st.map({
+    "lat": [11.3410 + random.uniform(-0.01, 0.01)],
+    "lon": [77.7172 + random.uniform(-0.01, 0.01)]
+})
+
+# --- Emergency Assistance ---
 st.header("🆘 Emergency Assistance")
 if st.button("🚨 Send Emergency Signal"):
-    st.warning("🚨 Emergency signal sent to nearest station! Help is on the way.")
+    st.error("Emergency alert sent to nearest support center. Help is on the way!")
 
-# AI-Powered Routing
-st.header("🧠 AI-Powered Route Optimization")
+# --- Estimated Time & Traffic ---
+st.header("⏱️ Estimated Travel Time (Based on Traffic)")
+traffic_factor = random.randint(10, 25)
+st.info(f"Estimated time to reach your destination: **{traffic_factor} minutes**.")
+
+# --- Battery Monitoring ---
+st.header("🔋 Smart Battery & Charging Status")
+battery_level = random.randint(40, 100)
+charging = battery_level < 50
+st.progress(battery_level / 100)
+st.text(f"Battery Level: {battery_level}% {'(Charging Recommended)' if charging else '(Good to Go!)'}")
+
+# --- Key Features Section ---
+st.header("🚴‍♂️ Key Features")
 st.markdown("""
-Our smart algorithm provides:
-- Optimized routes based on traffic
-- Support for differently-abled users
-- Environmental-friendly suggestions 🚦🌳
+- 📡 **Real-Time GPS Tracking**  
+- 👁️ **Live Monitoring System**  
+- 🆘 **Emergency Signal Support**  
+- ♿ **Route Optimization for Differently-Abled**  
+- 🔋 **Battery Level & Charging Station Info**  
+- 🚌 **Local Transport Integration**  
+- 💬 **User-Friendly Booking Interface**
 """)
 
-# Smart Battery & Transport Integration
-st.subheader("🔋 Smart Battery & Transit Connectivity")
-st.markdown("""
-- Battery status notifications to avoid mid-way halts  
-- Integrated with metro, bus, and local transport for hassle-free rides  
-""")
-
-# Contact Info
+# --- Contact Section ---
 st.header("📞 Contact Us")
 col1, col2 = st.columns(2)
 with col1:
     st.markdown("""
-    - 📧 **Email**: hemamalini291204@gmail.com  
-    - 📱 **Phone**: +91-9876543210  
+    - 📧 Email: ecocyclesupport@gmail.com  
+    - 📱 Contact: +91-9876543210
     """)
 with col2:
     st.markdown("""
-    - 🌐 **Website**: [ecocycle-ai.web.app](https://ecocycle-ai.web.app)  
-    - 🏢 **Address**: Vivekananda College of Technology for Women, Tamil Nadu  
+    - 🌐 Website: [ecocycle-ai.web.app](https://ecocycle-ai.web.app)  
+    - 🧠 Powered by: Hemamalini L  
     """)
 
-# Footer
+# --- Footer ---
 st.markdown("---")
-st.markdown("© 2025 EcoCycle-AI | Developed by Hemamalini L 💚")
+st.markdown("© 2025 EcoCycle-AI | Built with ❤️ using Streamlit by Hemamalini L")
+
 
 
 
