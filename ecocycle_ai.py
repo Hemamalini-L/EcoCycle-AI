@@ -99,3 +99,4 @@ st.markdown("""
 # --- Footer ---
 st.markdown("---")
 st.caption("\u00a9 2025 EcoCycle-AI | Developed by Hemamalini L | All rights reserved.")
+
